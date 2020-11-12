@@ -1,0 +1,41 @@
+{
+  "folders": [
+    {
+      "name": "trad-data",
+      "path": "."
+    },
+    {
+      "name": "@models",
+      "path": "./src/models"
+    },
+    {
+      "path": "./src/services",
+      "name": "@services"
+    },
+    {
+      "path": "./src/interfaces",
+      "name": "@interfaces"
+    },
+    {
+      "path": "./src/servers/accounts-server",
+      "name": "auth-server"
+    },
+    {
+      "path": "./src/servers/api-server",
+      "name": "api-server"
+    }
+  ],
+  "settings": {
+    "editor.tabSize": 4,
+    "prettier.tabWidth": 4,
+    "prettier.useTabs": true,
+    "editor.tabCompletion": "on",
+    "jest.disabledWorkspaceFolders": [
+      "@interfaces",
+      "@services",
+      "@models",
+      "api-server",
+      "auth-server"
+    ]
+  }
+}
