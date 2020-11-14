@@ -53,6 +53,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
     "module-alias": "^2.2.2",
+    "mongodb": "^3.6.3",
     "mongoose": "^5.10.10",
     "mongoose-delete": "^0.5.2",
     "mongoose-unique-validator": "^2.0.3",
@@ -65,6 +66,7 @@
     "@babel/node": "^7.8.7",
     "@babel/plugin-transform-typescript": "^7.10.1",
     "@babel/preset-env": "^7.9.5",
+    "@shelf/jest-mongodb": "^1.2.3",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "babel-jest": "^26.1.0",
@@ -73,6 +75,7 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "jest": "^26.0.1",
+    "ts-jest": "^26.4.4",
     "ts-node": "^9.0.0",
     "tsconfig-paths": "^3.9.0"
   }
