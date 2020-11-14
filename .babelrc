@@ -11,5 +11,5 @@
     "@babel/preset-typescript"
   ],
   "plugins": ["@babel/plugin-transform-typescript"],
-  "only": ["./src", "./tests", "./jest"]
+  "only": ["./src", "./tests", "./jest", "jest-mongodb-config.js"]
 }

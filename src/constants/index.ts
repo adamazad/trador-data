@@ -16,7 +16,6 @@ config(options);
  */
 export const APP_URL = process.env.APP_URL || 'http://localhost:3000';
 export const APP_HOST = process.env.APP_HOST || 'localhost';
-export const APP_PUBLIC_URL = process.env.APP_PUBLIC_URL || undefined;
 
 /**
  * Auth Server
@@ -34,7 +33,7 @@ export const API_SERVER_HOST = process.env.API_SERVER_HOST || 'localhost';
 export const API_SERVER_PORT = process.env.API_SERVER_PORT || 4002;
 export const API_SERVER_URL = `${API_SERVER_PROTOCOL}://${API_SERVER_PORT}:${API_SERVER_HOST}`;
 
-if ([NODE_ENV, APP_URL, APP_HOST, APP_PUBLIC_URL].includes(undefined)) {
+if ([NODE_ENV, APP_URL, APP_HOST].some(entry => entry == undefined)) {
   throw new Error('Missing APP_* environment variables. Check .env file');
 }
 
@@ -64,12 +63,13 @@ if ([MONGO_URI].includes(undefined)) {
   );
 }
 
-console.log({
-  NODE_ENV,
-  APP_PUBLIC_URL,
-  JWT_TYPE,
-  JWT_AUD,
-  JWT_SECRET,
-  JWT_EXPIRES_IN,
-  MONGO_HOST,
-});
+if (NODE_ENV !== 'test') {
+  console.log({
+    NODE_ENV,
+    JWT_TYPE,
+    JWT_AUD,
+    JWT_SECRET,
+    JWT_EXPIRES_IN,
+    MONGO_URI,
+  });
+}
