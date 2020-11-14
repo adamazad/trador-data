@@ -3,7 +3,7 @@ const { compilerOptions } = require('./tsconfig');
 
 module.exports = {
   roots: ['<rootDir>'],
-  testEnvironment: 'node',
+  preset: '@shelf/jest-mongodb',
   setupFiles: [],
   setupFilesAfterEnv: [],
   testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
