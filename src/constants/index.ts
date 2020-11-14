@@ -56,11 +56,11 @@ if ([JWT_TYPE, JWT_AUD, JWT_SECRET, JWT_EXPIRES_IN].includes(undefined)) {
 /**
  * Mongo
  */
-export const MONGO_HOST = process.env.MONGO_HOST || undefined;
+export const MONGO_URI = process.env.MONGO_URI || undefined;
 
-if ([MONGO_HOST].includes(undefined)) {
+if ([MONGO_URI].includes(undefined)) {
   throw new Error(
-    'Missing MongoDB host environment variable (MONGO_HOST). Check .env file'
+    'Missing MongoDB host environment variable (MONGO_URI). Check .env file'
   );
 }
 

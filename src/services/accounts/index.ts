@@ -24,9 +24,9 @@ export async function registerWithEmailAndPassword(
     return Promise.reject(new EmailNotAllowedError());
   }
   // Assume the user is in database
-  const userExists = await UserModel.findOne({ email }).exec();
+  const userExists = await UserModel.exists({ email });
 
-  if (userExists !== null) {
+  if (userExists) {
     return Promise.reject(new EmailAlreadyInUseError());
   }
 
