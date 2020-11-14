@@ -3,10 +3,7 @@ import { EmailAlreadyInUseError } from './AccountError';
 import * as AccountService from '.';
 import UserModel from '@models/User';
 
-const MONGO_URI =
-  process.env.MONGO_URI ||
-  process.env.MONGO_URL ||
-  'mongodb://localhost:27017/jest';
+const MONGO_URI = process.env.MONGO_URL as string;
 
 beforeAll(async () => {
   await Mongoose.connect(MONGO_URI, {

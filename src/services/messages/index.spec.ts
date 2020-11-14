@@ -2,10 +2,7 @@ import Mongoose from 'mongoose';
 import MessageModel from '@models/Message';
 import * as MessagesService from '.';
 
-const MONGO_URI =
-  process.env.MONGO_URI ||
-  process.env.MONGO_URL ||
-  'mongodb://localhost:27017/jest';
+const MONGO_URI = process.env.MONGO_URL as string;
 
 beforeAll(async () => {
   await Mongoose.connect(MONGO_URI, {
