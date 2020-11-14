@@ -1,8 +1,8 @@
 import Mongoose from 'mongoose';
 
-import { MONGO_HOST, NODE_ENV } from '@constants';
+import { MONGO_URI, NODE_ENV } from '@constants';
 
-Mongoose.connect(MONGO_HOST || '', {
+Mongoose.connect(MONGO_URI || '', {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
