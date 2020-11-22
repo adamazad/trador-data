@@ -43,6 +43,7 @@ async function configure() {
 export async function init() {
   await configure();
   await server.initialize();
+  return server;
 }
 
 /**
