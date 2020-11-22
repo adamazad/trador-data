@@ -8,17 +8,14 @@ import * as AccountService from '@services/accounts';
 export async function register(req: IRegisterRequest, h: ResponseToolkit) {
   const { payload } = req;
 
-  await AccountService.registerWithEmailAndPassword(
-    payload.email,
-    payload.password,
-    {
+  try {
+    await AccountService.registerWithEmailAndPassword(payload.email, payload.password, {
       name: AnonAnimals.get(),
-    }
-  ).catch(err => {
+    });
+    return h.response().code(201);
+  } catch (err) {
     throw Boom.badRequest(err);
-  });
-
-  return h.response().code(201);
+  }
 }
 
 export async function login(req: ILoginRequest, h) {
@@ -26,10 +23,7 @@ export async function login(req: ILoginRequest, h) {
 
   try {
     // Error is dispatched to API
-    const appUser = await AccountService.loginWithEmailAndPassword(
-      payload.email,
-      payload.password
-    );
+    const appUser = await AccountService.loginWithEmailAndPassword(payload.email, payload.password);
     return appUser;
   } catch (e) {
     throw Boom.badRequest(e);

@@ -21,9 +21,7 @@ export async function getMessages() {
 }
 
 export async function getMessage(req: IGetMesssageRequest) {
-  const message = await MessageService.findMessageById(
-    req.params.messageId
-  ).catch(error => Boom.badRequest(error));
+  const message = await MessageService.findMessageById(req.params.messageId).catch(error => Boom.badRequest(error));
 
   if (message == null) {
     throw Boom.notFound();
@@ -52,10 +50,7 @@ export async function createMessage(req: ICreateMesssageRequest) {
   return message.toJSON();
 }
 
-export async function updateMesssage(
-  req: IUpdateMesssageRequest,
-  h: ResponseToolkit
-) {
+export async function updateMesssage(req: IUpdateMesssageRequest, h: ResponseToolkit) {
   const { credentials } = req.auth;
   const { messageId } = req.params;
 
@@ -69,18 +64,12 @@ export async function updateMesssage(
     throw Boom.forbidden();
   }
 
-  await MessageService.findAndUpdateMessageById(
-    messageId,
-    req.payload
-  ).catch(error => Boom.badRequest(error));
+  await MessageService.findAndUpdateMessageById(messageId, req.payload).catch(error => Boom.badRequest(error));
 
   return h.response().code(204);
 }
 
-export async function deleteMesssage(
-  req: IDeleteMesssageRequest,
-  h: ResponseToolkit
-) {
+export async function deleteMesssage(req: IDeleteMesssageRequest, h: ResponseToolkit) {
   const { credentials } = req.auth;
   const { messageId } = req.params;
 
@@ -94,9 +83,7 @@ export async function deleteMesssage(
     throw Boom.unauthorized();
   }
 
-  await MessageService.findAndDeleteMessageById(messageId).catch(error =>
-    Boom.badRequest(error)
-  );
+  await MessageService.findAndDeleteMessageById(messageId).catch(error => Boom.badRequest(error));
 
   return h.response().code(204);
 }
