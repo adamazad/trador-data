@@ -30,7 +30,7 @@ export async function getMessage(req: IGetMesssageRequest) {
   return message;
 }
 
-export async function createMessage(req: ICreateMesssageRequest) {
+export async function createMessage(req: ICreateMesssageRequest, h: ResponseToolkit) {
   const { payload, auth } = req;
   const { credentials } = auth;
 
@@ -47,7 +47,7 @@ export async function createMessage(req: ICreateMesssageRequest) {
     user: credentials.id,
   });
 
-  return message.toJSON();
+  return h.response(message.toJSON()).code(201);
 }
 
 export async function updateMesssage(req: IUpdateMesssageRequest, h: ResponseToolkit) {
