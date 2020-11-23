@@ -33,10 +33,7 @@ describe('Auth Service', () => {
 
   describe('register', () => {
     test('Should register a new user with email and password', async () => {
-      await AccountService.registerWithEmailAndPassword(
-        testUser.email,
-        testUser.password
-      );
+      await AccountService.registerWithEmailAndPassword(testUser.email, testUser.password);
 
       const account = await AccountService.findAccountByEmail(testUser.email);
 
@@ -45,15 +42,9 @@ describe('Auth Service', () => {
 
     test('Should fail creating an account with duplicate email', async () => {
       // Create user
-      await AccountService.registerWithEmailAndPassword(
-        testUser.email,
-        testUser.password
-      );
+      await AccountService.registerWithEmailAndPassword(testUser.email, testUser.password);
 
-      const failedToCreate = AccountService.registerWithEmailAndPassword(
-        testUser.email,
-        testUser.password
-      );
+      const failedToCreate = AccountService.registerWithEmailAndPassword(testUser.email, testUser.password);
 
       expect(failedToCreate).rejects.toThrow(EmailAlreadyInUseError);
     });
@@ -61,25 +52,16 @@ describe('Auth Service', () => {
 
   describe('login', () => {
     test('Should log in a user with right credentials', async () => {
-      await AccountService.registerWithEmailAndPassword(
-        testUser.email,
-        testUser.password
-      );
+      await AccountService.registerWithEmailAndPassword(testUser.email, testUser.password);
 
-      const appUser = await AccountService.loginWithEmailAndPassword(
-        testUser.email,
-        testUser.password
-      );
+      const appUser = await AccountService.loginWithEmailAndPassword(testUser.email, testUser.password);
 
       expect(appUser.email).toEqual(testUser.email);
     });
   });
 
   test('Should retrieve one user from database by email', async () => {
-    await AccountService.registerWithEmailAndPassword(
-      testUser.email,
-      testUser.password
-    );
+    await AccountService.registerWithEmailAndPassword(testUser.email, testUser.password);
 
     const user = await AccountService.findAccountByEmail(testUser.email);
     expect(user?.email).toEqual(testUser.email);

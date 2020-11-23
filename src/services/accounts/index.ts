@@ -3,12 +3,7 @@ import { AppUser, UserAuth } from '@interfaces/AppUser';
 import UserModel, { UserDocument } from '@models/User';
 import JwtService from '@services/jwt';
 
-import {
-  EmailAlreadyInUseError,
-  WrongCredentialsError,
-  EmailNotAllowedError,
-  UserNotFoundError,
-} from './AccountError';
+import { EmailAlreadyInUseError, WrongCredentialsError, EmailNotAllowedError, UserNotFoundError } from './AccountError';
 
 type InitialFields = {
   name?: string;
@@ -44,10 +39,7 @@ export async function registerWithEmailAndPassword(
  * @param {String} password User password
  * @returns {AppUser}
  */
-export async function loginWithEmailAndPassword(
-  email: string,
-  password: string
-): Promise<AppUser> {
+export async function loginWithEmailAndPassword(email: string, password: string): Promise<AppUser> {
   const user = await UserModel.findOne({ email }).exec();
 
   // if user is not found
@@ -118,10 +110,7 @@ export async function findAccountByEmail(email: string) {
  * @param {Schema.Types.ObjectId} options.email Supply email
  * @param {String} options.password Supply email
  */
-export async function resetAccountPasswordById(
-  userId: string,
-  newPassword: string
-) {
+export async function resetAccountPasswordById(userId: string, newPassword: string) {
   const userExists = await UserModel.findById(userId);
 
   if (!userExists) {
