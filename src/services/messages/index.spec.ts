@@ -85,10 +85,7 @@ describe('Messages Service', () => {
       expect(foundMessages.length).toEqual(mockMessages.length);
       // Compare submitted messages agaisnt created ones
       const contentExists = foundMessages.every(
-        foundMessage =>
-          mockMessages.find(
-            mockMessage => mockMessage.message === foundMessage.message
-          ) != undefined
+        foundMessage => mockMessages.find(mockMessage => mockMessage.message === foundMessage.message) != undefined
       );
       expect(contentExists).toBeTruthy();
     });

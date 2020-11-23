@@ -43,28 +43,19 @@ class AuthError extends Error {
 
 export class EmailNotVerifiedError extends AuthError {
   constructor() {
-    super(
-      ERROR_LIST.emailNotVerified.code,
-      ERROR_LIST.emailNotVerified.message
-    );
+    super(ERROR_LIST.emailNotVerified.code, ERROR_LIST.emailNotVerified.message);
   }
 }
 
 export class EmailAlreadyInUseError extends AuthError {
   constructor() {
-    super(
-      ERROR_LIST.emailAlreadyInUse.code,
-      ERROR_LIST.emailAlreadyInUse.message
-    );
+    super(ERROR_LIST.emailAlreadyInUse.code, ERROR_LIST.emailAlreadyInUse.message);
   }
 }
 
 export class WrongCredentialsError extends AuthError {
   constructor() {
-    super(
-      ERROR_LIST.wrongCredentials.code,
-      ERROR_LIST.wrongCredentials.message
-    );
+    super(ERROR_LIST.wrongCredentials.code, ERROR_LIST.wrongCredentials.message);
   }
 }
 

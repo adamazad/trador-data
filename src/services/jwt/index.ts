@@ -1,11 +1,5 @@
-import {
-  sign as signBase,
-  verify as verifyBase,
-  VerifyOptions,
-  Secret,
-  SignOptions,
-} from 'jsonwebtoken';
-import { JWT_SECRET, JWT_EXPIRES_IN, JWT_AUD } from '../../constants';
+import { sign as signBase, verify as verifyBase, VerifyOptions, Secret, SignOptions } from 'jsonwebtoken';
+import { JWT_SECRET, JWT_EXPIRES_IN, JWT_AUD } from '@constants';
 
 let secret: Secret = JWT_SECRET as string;
 let expires_in: number = JWT_EXPIRES_IN;
@@ -46,23 +40,15 @@ export function getExpiresIn(): number {
  * @param {VerifyOptions} verifyOptions
  * @returns {Promise<Object>} An Object with the claim
  */
-export async function verify<R>(
-  token: string,
-  verifyOptions: VerifyOptions | undefined = undefined
-): Promise<R> {
+export async function verify<R>(token: string, verifyOptions: VerifyOptions | undefined = undefined): Promise<R> {
   return new Promise((resolve, reject) => {
-    return verifyBase(
-      token,
-      getSecret(),
-      verifyOptions,
-      (err, decoded: any) => {
-        if (err) {
-          return reject(err);
-        }
-
-        return resolve(decoded as R);
+    return verifyBase(token, getSecret(), verifyOptions, (err, decoded: any) => {
+      if (err) {
+        return reject(err);
       }
-    );
+
+      return resolve(decoded as R);
+    });
   });
 }
 
@@ -71,20 +57,14 @@ export async function verify<R>(
  * @param {any} payload the payload
  * @param {SignOptions} options signing option
  */
-export async function sign(
-  payload: any,
-  signOptions: SignOptions = { expiresIn: JWT_EXPIRES_IN }
-) {
+export async function sign(payload: any, signOptions: SignOptions = { expiresIn: JWT_EXPIRES_IN }) {
   return signBase({ ...payload, aud: JWT_AUD }, getSecret(), {
     ...signOptions,
   });
 }
 
 interface JwtService {
-  verify<R>(
-    token: string,
-    verifyOptions?: VerifyOptions | undefined
-  ): Promise<R>;
+  verify<R>(token: string, verifyOptions?: VerifyOptions | undefined): Promise<R>;
   sign(payload: any, signOptions?: SignOptions): Promise<string>;
   setSecret(secretOrPublicKey: Secret): void;
   getSecret(): Secret;

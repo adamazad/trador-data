@@ -1,8 +1,4 @@
-import {
-  isValidObjectId,
-  MongooseFilterQuery,
-  MongooseUpdateQuery,
-} from 'mongoose';
+import { isValidObjectId, MongooseFilterQuery, MongooseUpdateQuery } from 'mongoose';
 import MessageModel, { MessageDocument } from '@models/Message';
 import '@models/User';
 
@@ -40,9 +36,7 @@ export async function findMessageById(messageId: string) {
  *
  * @param {MongooseFilterQuery<MessageDocument>} conditions query conditions
  */
-export async function findMessages(
-  conditions: MongooseFilterQuery<MessageDocument> = {}
-) {
+export async function findMessages(conditions: MongooseFilterQuery<MessageDocument> = {}) {
   return MessageModel.find(conditions).exec();
 }
 
@@ -60,10 +54,7 @@ export function createQuery() {
  * @param {string} messageId the message Id
  * @param updatePayload fields to update
  */
-export async function findAndUpdateMessageById(
-  messageId: string,
-  updatePayload: MongooseUpdateQuery<MessageDocument>
-) {
+export async function findAndUpdateMessageById(messageId: string, updatePayload: MongooseUpdateQuery<MessageDocument>) {
   return MessageModel.findByIdAndUpdate(messageId, updatePayload, {
     new: true,
   }).exec();
