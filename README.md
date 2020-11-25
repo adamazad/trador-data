@@ -1,8 +1,8 @@
-# Trador Back-End
+# Trådor Back-End
 
-Both servers share `User` model, so a monorepo was ideal at the moment. However, an ideal configuration would be three packages:
+Both servers share the `User` model, so a monorepo was ideal at the moment. However, an ideal configuration would be three packages:
 
-1. `trador-models`: a NPM packge containing all the models with types. Installed from source as a dependency.
+1. `trador-models`: an NPM package containing all the models with types. Installed from source as a dependency.
 2. `auth-server`: contains all Auth controllers and services.
 3. `api-server`: contains all API controllers and services.
 
@@ -24,7 +24,7 @@ $ npm run build
 
 # Deployment
 
-Crate a copy of `.env.sample` and rename it to `.env`
+Create a copy of `.env.sample` and rename it to `.env`
 
 ```
 $ cp .env.sample .env
@@ -32,15 +32,15 @@ $ cp .env.sample .env
 
 All can be left as they are except for `MONGO_URI`.
 
-Both servers can be deployed using [PM2](https://pm2.io) in a single command. The configurations are in `ecosystem.config.js`. In command line, type:
+Both servers can be deployed using [PM2](https://pm2.io) in a single command. The configurations are in `ecosystem.config.js`. In the command line, type:
 
 ```
 $ pm2 start ecosystem.config.js
 ```
 
-Each server is configured to have have to insatnces, which is more than enough for a small-scale application.
+Each server is configured to have two instances, which is more than enough for a small-scale application.
 
-Logs can be traced using
+Logs can be traced using by running:
 
 ```
 $ pm2 logs
