@@ -30,12 +30,6 @@
     "prettier.tabWidth": 4,
     "prettier.useTabs": true,
     "editor.tabCompletion": "on",
-    "jest.disabledWorkspaceFolders": [
-      "@interfaces",
-      "@services",
-      "@models",
-      "api-server",
-      "auth-server"
-    ]
+    "jest.disabledWorkspaceFolders": ["@interfaces", "@services", "@models", "api-server", "auth-server"]
   }
 }
